@@ -89,7 +89,18 @@
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
-
+            <div class="mb-3">
+                <label for="escenari_id">Escenari</label>
+                <select name="escenari_id" id="escenari_id" required>
+                    <option value="">-- Selecciona un escenari --</option>
+                    @foreach ($escenaris as $escenari)
+                        <option value="{{ $escenari->id }}" @selected(old('escenari_id') == $escenari->id)>
+                            {{ $escenari->nom }} ({{ $escenari->aforament_maxim }})
+                        </option>
+                    @endforeach
+                </select>
+                @error('escenari_id') <span>{{ $message }}</span> @enderror
+            </div>
             <button type="submit" class="btn btn-primary">Crear concert</button>
             <a href="{{ route('concerts.index') }}" class="btn btn-secondary">Tornar</a>
         </form>

@@ -26,6 +26,7 @@
                     <th>Data i hora</th>
                     <th>Tipus</th>
                     <th>Durada (minuts)</th>
+                    <th>Escenari</th>
                     <th>Accions</th>
                 </tr>
                 </thead>
@@ -57,12 +58,14 @@
                             </span>
                         </td>
                         <td>{{ $concert->durada_minuts }}</td>
+                        <td>{{ $concert->escenari->nom }}</td>
                         <td>
                             <a href="{{ route('concerts.show', $concert) }}"
                                class="btn btn-sm btn-info">
                                 Veure
                             </a>
                         </td>
+
                     </tr>
                 @endforeach
                 </tbody>

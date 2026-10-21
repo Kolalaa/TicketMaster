@@ -46,6 +46,8 @@
                     <strong>Biografia:</strong>
                     {{ $concert->artista->bio ?? 'Sense biografia disponible.' }}
                 </p>
+                <p> <strong>Escenari:</strong> {{ $concert->escenari->nom }}</p>
+                <p> <strong>Aforament:</strong> {{ $concert->escenari->aforament_maxim }}</p>
             </div>
         </div>
 

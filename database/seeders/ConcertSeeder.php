@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Escenari;
 use App\Models\Artista;
 use App\Models\Concert;
 use Illuminate\Database\Seeder;
@@ -10,9 +11,11 @@ class ConcertSeeder extends Seeder
 {
     public function run(): void
     {
-        $artistes = Artista::where('actiu', true)->get();
 
-        if ($artistes->isEmpty()) {
+        $artistes  = Artista::where('actiu', true)->get();
+        $escenaris = Escenari::all();
+
+        if ($artistes->isEmpty() || $escenaris->isEmpty()) {
             return;
         }
 
@@ -36,7 +39,7 @@ class ConcertSeeder extends Seeder
 
         foreach ($concerts as $i => $concert) {
             $concert['artista_id'] = $artistes[$i % $artistes->count()]->id;
-
+            $concert['escenari_id'] = $escenaris->random()->id;
             Concert::create($concert);
         }
     }

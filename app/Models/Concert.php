@@ -27,4 +27,9 @@ class Concert extends Model
     {
         return $this->belongsTo(Artista::class);
     }
+
+    public function escenari()
+    {
+        return $this->belongsTo(Escenari::class);
+    }
 }
